@@ -141,11 +141,20 @@ py -3 examples\run_evaluation_cases.py
 
 Demo outputs are saved under `outputs/` as JSON and text files.
 
+## Benchmarks
+
+```bash
+py -3 benchmarks\run_benchmarks.py
+```
+
+Engine benchmarks are behavioral benchmarks. They test memory properties such as Return, evidence identity, noise separation, and direction preservation.
+
 ## Documentation
 
 - [Quickstart](docs/QUICKSTART.md)
 - [Engine API](docs/ENGINE_API.md)
 - [Integration Guide](docs/INTEGRATION_GUIDE.md)
+- [Benchmarks](docs/BENCHMARKS.md)
 - [AI App Demos](docs/AI_APP_DEMOS.md)
 - [Evaluation Cases](docs/EVALUATION_CASES.md)
 - [Kernel / Engine Boundary](docs/KERNEL_ENGINE_BOUNDARY.md)
@@ -163,4 +172,4 @@ py -3 -m unittest discover -s tests -p '*test*.py' -v
 
 ## Current status
 
-Local development prototype. The core API, validation, examples, evaluation cases, and serialization are in place. Public release packaging is not finalized yet.
+Local development prototype. The core API, validation, examples, evaluation cases, benchmarks, and serialization are in place. Public release packaging is not finalized yet.

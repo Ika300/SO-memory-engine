@@ -38,6 +38,7 @@ Do not silently hide this dependency.
 - [x] Input validation exists before Kernel execution.
 - [x] JSON-safe serialization exists via `to_dict()`.
 - [x] Evaluation cases exist.
+- [x] Engine benchmarks exist.
 - [x] Engine tests pass locally.
 - [ ] Decide whether `ContextPack.to_prompt_text()` is stable public API or example output.
 
@@ -48,6 +49,7 @@ Do not silently hide this dependency.
 - [x] Integration Guide exists.
 - [x] Engine API doc exists.
 - [x] Evaluation cases doc exists.
+- [x] Benchmarks doc exists.
 - [x] Release Strategy exists.
 - [ ] Add a short public example in the future repository description.
 
@@ -58,6 +60,7 @@ Run from `SO_Memory_Engine`:
 ```bash
 py -3 -m unittest discover -s tests -p '*test*.py' -v
 py -3 examples\run_evaluation_cases.py
+py -3 benchmarks\run_benchmarks.py
 ```
 
 Run from `SO_Memory_Kernel`:
