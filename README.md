@@ -1,5 +1,7 @@
 # SO Memory Engine
 
+[![tests](https://github.com/Ika300/SO-memory-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/Ika300/SO-memory-engine/actions/workflows/tests.yml)
+
 **A structural context construction layer for AI memory.**
 
 Vector memory retrieves what is similar.  
