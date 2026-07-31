@@ -287,6 +287,7 @@ Comparative benchmarks currently focus on Evidence Identity using transparent re
 - [Public / Private Boundary](docs/PUBLIC_PRIVATE_BOUNDARY.md)
 - [Public Release Checklist](docs/PUBLIC_RELEASE_CHECKLIST.md)
 - [Release Strategy](docs/RELEASE_STRATEGY.md)
+- [SO Platform Product Strategy](docs/SO_PLATFORM_PRODUCT_STRATEGY.md)
 - [GitHub Publication Steps](docs/GITHUB_PUBLICATION_STEPS.md)
 - [Engine Design](docs/ENGINE_DESIGN.md)
 
