@@ -41,6 +41,28 @@ py -3 -m pip install -e .
 
 See [Installation](docs/INSTALLATION.md).
 
+## Try Engine + Extractor Free
+
+This repository also includes SO Extractor Free under `SO_Extractor_Free/`.
+
+Use it when you want to try the full free path:
+
+```text
+conversation log
+    -> SO Extractor Free
+    -> SO Memory Engine
+    -> Context Pack
+```
+
+From this repository:
+
+```bash
+py -3 SO_Extractor_Free\examples\conversation_log_demo.py
+py -3 SO_Extractor_Free\examples\chatgpt_export_like_demo.py
+py -3 SO_Extractor_Free\examples\end_to_end_engine_demo.py
+```
+
+See [Engine + Extractor Free Trial](docs/ENGINE_EXTRACTOR_FREE_TRIAL.md).
 ## Try it in one command
 
 From this repository:
@@ -273,6 +295,7 @@ Comparative benchmarks currently focus on Evidence Identity using transparent re
 
 ## Documentation
 
+- [Engine + Extractor Free Trial](docs/ENGINE_EXTRACTOR_FREE_TRIAL.md)
 - [Installation](docs/INSTALLATION.md)
 - [Quickstart](docs/QUICKSTART.md)
 - [Engine API](docs/ENGINE_API.md)

@@ -1,0 +1,55 @@
+{
+  "conversations": [
+    {
+      "id": "chatgpt_like_conversation_001",
+      "title": "Work independence memory demo",
+      "source_id": "chatgpt_export_like_sample",
+      "mapping": {
+        "node_001": {
+          "message": {
+            "id": "cgpt_m001",
+            "author": {"role": "user"},
+            "create_time": 1761991200,
+            "content": {
+              "content_type": "text",
+              "parts": ["I want to build an independent product, but income stability still worries me."]
+            }
+          }
+        },
+        "node_002": {
+          "message": {
+            "id": "cgpt_m002",
+            "author": {"role": "assistant"},
+            "create_time": 1761991260,
+            "content": {
+              "content_type": "text",
+              "parts": ["The tension seems to be between freedom and financial safety."]
+            }
+          }
+        },
+        "node_003": {
+          "message": {
+            "id": "cgpt_m003",
+            "author": {"role": "user"},
+            "create_time": 1761991320,
+            "content": {
+              "content_type": "text",
+              "parts": ["I keep returning to the same problem: freedom, work, money, and fear."]
+            }
+          }
+        },
+        "node_004": {
+          "message": {
+            "id": "cgpt_m004",
+            "author": {"role": "user"},
+            "create_time": 1761991380,
+            "content": {
+              "content_type": "text",
+              "parts": ["My plan is to continue the engine project without losing financial safety."]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -46,3 +46,18 @@ jobs:
       - name: Run comparative benchmarks
         run: python benchmarks/run_comparative_benchmarks.py
         working-directory: SO_Memory_Engine
+
+      - name: Install bundled Extractor Free
+        run: python -m pip install -e SO_Extractor_Free
+        working-directory: SO_Memory_Engine
+
+      - name: Run bundled Extractor Free tests
+        run: python -m unittest discover -s SO_Extractor_Free/tests -p '*test*.py' -v
+        working-directory: SO_Memory_Engine
+
+      - name: Run bundled Extractor Free demos
+        run: |
+          python SO_Extractor_Free/examples/conversation_log_demo.py
+          python SO_Extractor_Free/examples/chatgpt_export_like_demo.py
+          python SO_Extractor_Free/examples/end_to_end_engine_demo.py
+        working-directory: SO_Memory_Engine
