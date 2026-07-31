@@ -44,9 +44,9 @@ These numbers should be updated only after rerunning the suite.
 
 ### 2. Comparative application benchmarks
 
-Comparative benchmarks are future work.
+Comparative benchmarks have started with a narrow Evidence Identity comparison. Broader application benchmarks are future work.
 
-They should test whether an AI application performs better when SO Memory Engine is used as part of its memory pipeline.
+Comparative benchmarks should test whether an AI application performs better when SO Memory Engine is used as part of its memory pipeline.
 
 Potential baselines:
 
@@ -58,7 +58,7 @@ Potential baselines:
 - SO Memory Engine
 - embedding retrieval plus SO
 
-These tests should be added only when they can be measured honestly.
+Additional comparisons should be added only when they can be measured honestly.
 
 ## Five behavioral benchmark pillars
 
@@ -120,7 +120,7 @@ Current coverage:
 
 ## First recommended comparative experiment
 
-The first comparative experiment should focus on Evidence Identity.
+The first comparative experiment focuses on Evidence Identity and is implemented in `benchmarks/run_comparative_benchmarks.py`.
 
 Question:
 
@@ -187,3 +187,5 @@ Current behavioral benchmarks do not prove:
 - automatic understanding of arbitrary raw text
 
 They prove that the alpha Engine preserves its intended structural memory behaviors on the included cases.
+
+

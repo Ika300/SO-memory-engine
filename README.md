@@ -222,16 +222,17 @@ This distinction matters because the same structure seen many times is not the s
 Current measured status:
 
 ```text
-Engine tests: 31/31 passed
+Engine tests: 35/35 passed
 Behavioral benchmarks: 6/6 passed
+Comparative benchmarks: 3/3 passed
 External API calls: 0
 Embeddings required: No
 LLM required: No
 ```
 
-These tests prove that the alpha Engine preserves its intended structural behaviors on the included test cases.
+These tests prove that the alpha Engine preserves its intended structural behaviors on the included test cases and can separate source evidence from contextual recurrence in the included Evidence Identity comparison.
 
-They do not yet prove that SO Memory Engine improves every AI application, outperforms all retrieval systems, or handles arbitrary natural language extraction by itself. Comparative application benchmarks are future work.
+They do not prove that SO Memory Engine improves every AI application, outperforms all retrieval systems, or handles arbitrary natural language extraction by itself.
 
 ## Demos
 
@@ -250,9 +251,12 @@ Demo outputs are saved under `outputs/` as JSON and text files.
 
 ```bash
 py -3 benchmarks\run_benchmarks.py
+py -3 benchmarks\run_comparative_benchmarks.py
 ```
 
 Engine benchmarks are behavioral benchmarks. They test memory properties such as structural recurrence, evidence identity, structural return, noise rejection, and direction preservation.
+
+Comparative benchmarks currently focus on Evidence Identity using transparent recent-memory and keyword-overlap baselines. They do not use embeddings or LLM calls.
 
 ## Documentation
 
@@ -261,6 +265,7 @@ Engine benchmarks are behavioral benchmarks. They test memory properties such as
 - [Integration Guide](docs/INTEGRATION_GUIDE.md)
 - [Benchmarks](docs/BENCHMARKS.md)
 - [Benchmark Strategy](docs/BENCHMARK_STRATEGY.md)
+- [Comparative Benchmarks](docs/COMPARATIVE_BENCHMARKS.md)
 - [Evaluation Principles](docs/EVALUATION_PRINCIPLES.md)
 - [AI App Demos](docs/AI_APP_DEMOS.md)
 - [Evaluation Cases](docs/EVALUATION_CASES.md)
@@ -280,3 +285,5 @@ py -3 -m unittest discover -s tests -p '*test*.py' -v
 ## Current status
 
 Alpha prototype. The core API, validation, examples, evaluation cases, behavioral benchmarks, and serialization are in place. Public release packaging and install flow are not finalized yet.
+
+

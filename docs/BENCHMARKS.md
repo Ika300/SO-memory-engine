@@ -64,6 +64,18 @@ Each case reports:
 - contextual recurrence count
 - elapsed milliseconds
 
+## Comparative benchmark
+
+Evidence Identity comparative benchmarks are available separately:
+
+```bash
+py -3 benchmarks\run_comparative_benchmarks.py
+```
+
+They compare recent memory, transparent keyword overlap, SO Memory Engine, and keyword overlap plus SO. They do not use embeddings or LLM calls.
+
+See [Comparative Benchmarks](COMPARATIVE_BENCHMARKS.md).
+
 ## Design boundary
 
 Benchmarks must not add:
@@ -76,3 +88,5 @@ Benchmarks must not add:
 - UI assumptions
 
 The benchmark should test the Engine as a structural memory context layer.
+
+
