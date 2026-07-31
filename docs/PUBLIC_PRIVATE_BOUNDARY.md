@@ -1,4 +1,4 @@
-﻿# Public / Private Boundary Draft
+# Public / Private Boundary Draft
 
 This is a planning document for future release decisions. It is not a public promise.
 

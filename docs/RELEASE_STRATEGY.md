@@ -1,4 +1,4 @@
-﻿# Release Strategy
+# Release Strategy
 
 SO Memory Engine should be released as a separate repository from SO Memory Kernel.
 
@@ -46,17 +46,7 @@ Future paid materials may include:
 
 The public Engine should remain useful by itself. The paid path should sell convenience, integration, evaluation, and applied packaging rather than hiding the basic idea.
 
-## Kernel dependency strategy
-
-Current local development imports SO Memory Kernel from a sibling folder.
-
-For the first public Engine repository, the safest path is:
-
-1. Keep Kernel as a separate public repository.
-2. Tell users to clone both repositories side by side during alpha.
-3. Later, package Kernel as an installable dependency.
-
-Do not vendor Kernel into Engine unless there is a strong reason. Vendoring blurs the boundary and makes updates harder.
+## Kernel dependency strategy\n\nSO Memory Kernel remains a separate public repository, but Engine now declares it as a Git dependency in `pyproject.toml`.\n\nThe default alpha install path is:\n\n```bash\npy -3 -m pip install -e .\n```\n\nThis pulls Kernel from GitHub. Manual sibling-repository setup remains available for local Kernel development or dependency-install failure.\n\nDo not vendor Kernel into Engine unless there is a strong reason. Vendoring blurs the boundary and makes updates harder.
 
 ## Alpha release warning
 
@@ -68,7 +58,7 @@ The first Engine release should clearly say:
 - no LLM calls
 - no natural-language parsing
 - requires caller-supplied structure
-- currently expects local access to SO Memory Kernel
+- installs SO Memory Kernel from GitHub by default, with manual local setup available
 
 This honesty is good. It makes the project look serious rather than overhyped.
 

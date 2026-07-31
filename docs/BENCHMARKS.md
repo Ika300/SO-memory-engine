@@ -1,4 +1,4 @@
-﻿# Engine Benchmarks
+# Engine Benchmarks
 
 SO Memory Engine benchmarks are behavioral benchmarks.
 
@@ -59,7 +59,7 @@ Each case reports:
 - recurring structures
 - unresolved tensions
 - structural connections
-- independent fragment count
+- trace fragment count
 - unique source count
 - contextual recurrence count
 - elapsed milliseconds

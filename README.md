@@ -20,17 +20,18 @@ This repository is currently an alpha prototype.
 
 ## What goes in, what comes out
 
-Input is structured memory supplied by your application:
+Simplified input:
 
 ```json
 {
+  "id": "m1",
   "content": "I keep returning to memory and structure.",
   "labels": ["memory", "structure"],
   "source_id": "note_001"
 }
 ```
 
-Output is a Context Pack:
+Simplified Context Pack output:
 
 ```json
 {
@@ -38,13 +39,14 @@ Output is a Context Pack:
   "recurring_structures": ["Bridge: memory <-> structure"],
   "unresolved_tensions": ["memory / similarity"],
   "evidence_summary": {
+    "trace_fragment_count": 3,
     "unique_source_count": 2,
     "contextual_recurrence_count": 5
   }
 }
 ```
 
-The demo uses curated examples, but the product boundary is broader: any caller can provide structured memories from forms, logs, human review, rules, or another extraction layer.
+The demo uses curated examples, but the Engine accepts any caller-supplied structured memories.
 
 ## Why Context Packs matter
 
@@ -138,7 +140,7 @@ See:
 
 SO Memory Engine is a structural context construction layer.
 
-It receives caller-supplied structured memory fragments and builds a compact Context Pack containing:
+It receives caller-supplied `EngineMemory` objects or equivalent structured memory data and builds a compact Context Pack containing:
 
 - active memories;
 - returning structures;
@@ -151,18 +153,9 @@ The Context Pack is reference material for downstream systems. It is not a final
 
 ## What this repository is not
 
-SO Memory Engine is not:
+It does not perform extraction, storage, semantic search, or response generation.
 
-- an LLM;
-- a chatbot;
-- a natural-language parser;
-- an embedding model;
-- a vector database;
-- a summarizer;
-- a hidden ontology;
-- a semantic-merge layer.
-
-The Engine preserves supplied structure. It does not correct bad extraction automatically.
+The Engine treats supplied structure as caller-owned input and does not reinterpret it automatically.
 
 ## Minimal Python example
 
@@ -177,7 +170,6 @@ memories = [
         relations=[
             EngineRelation("memory", "structure", "bridge", 0.8, False),
         ],
-        bridge_potential=0.8,
         source_id="note_001",
     )
 ]
@@ -194,29 +186,13 @@ result = MemoryEngine().build_context(
 print(result.context_pack.to_prompt_text())
 ```
 
-## Evidence count names
+## Repository scope
 
-Current alpha names expose two levels of evidence breadth:
+The Engine expects `EngineMemory` objects or equivalent structured memory data. A MemoryUnit is represented in this API as an `EngineMemory` object.
 
-| Field | Meaning |
-| --- | --- |
-| `independent_source_count` | Kernel trace fragment breadth. |
-| `unique_source_count` | Caller-level unique `source_id` breadth. |
-| `contextual_recurrence_count` | Repeated overlay/context exposure. |
+A production system may create structured memories from forms, logs, human review, rules, another parser, or another extraction layer.
 
-The names may become clearer in a future version, but they are kept stable for this alpha API.
-
-## Input boundary
-
-The Engine expects structured memory. Your application owns extraction.
-
-A production system may create MemoryUnits from forms, logs, human review, rules, another parser, or a future paid extractor. This repository intentionally keeps that boundary clear so Engine behavior is not confused with extraction quality.
-
-## Current free/demo boundary
-
-The free public repository demonstrates the Engine itself using caller-supplied structured memories.
-
-It does not claim production extraction from arbitrary raw conversations. That problem belongs to a separate extractor layer.
+`current_message` is preserved as trace text. The Engine does not infer structure from it.
 
 ## Benchmarks
 

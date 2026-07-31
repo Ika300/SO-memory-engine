@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import dataclass
 import json
@@ -240,7 +240,7 @@ def _evaluate_case(name: str, memories: list[EngineMemory], *, expected_mode: st
         check("same-source repetition is not treated as equal independent breadth", engine_unique_sources < engine_contextual)
         check("keyword support count is larger than keyword unique source count", naive_keyword_support > keyword_unique_sources)
     elif expected_mode == "independent_sources":
-        check("independent-source case exposes broader source breadth", engine_unique_sources >= 5)
+        check("fragment-level and source-level case exposes broader source breadth", engine_unique_sources >= 5)
         check("source breadth is close to contextual recurrence", engine_unique_sources >= min(engine_contextual, 5))
     elif expected_mode == "mixed":
         check("mixed case preserves both recurrence and source breadth", engine_contextual > engine_unique_sources >= 4)

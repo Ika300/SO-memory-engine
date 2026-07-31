@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from pathlib import Path
 import sys
@@ -28,7 +28,7 @@ def main() -> None:
         print(f"recurring structures: {len(result.recurring_structures)}")
         print(f"unresolved tensions: {len(result.unresolved_tensions)}")
         print(f"structural connections: {len(result.structural_connections)}")
-        print(f"independent fragment count: {result.evidence_summary.independent_source_count}")
+        print(f"trace fragment count: {result.evidence_summary.trace_fragment_count}")
         print(f"unique source count: {result.evidence_summary.unique_source_count}")
         print(f"contextual recurrence count: {result.evidence_summary.contextual_recurrence_count}")
         print(f"saved json: {json_path}")

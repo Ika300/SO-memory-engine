@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import dataclass
 import json
@@ -63,7 +63,7 @@ def _run_case(name: str, runner: Callable[[], object], checks: list[tuple[str, C
         "recurring_structures": len(result.recurring_structures),
         "unresolved_tensions": len(result.unresolved_tensions),
         "structural_connections": len(result.structural_connections),
-        "independent_fragment_count": evidence.independent_source_count,
+        "trace_fragment_count": evidence.trace_fragment_count,
         "unique_source_count": evidence.unique_source_count,
         "contextual_recurrence_count": evidence.contextual_recurrence_count,
     }

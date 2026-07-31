@@ -1,4 +1,4 @@
-﻿# AI App Demo Guide
+# AI App Demo Guide
 
 SO Memory Engine is designed to sit between an AI application and SO Memory Kernel.
 

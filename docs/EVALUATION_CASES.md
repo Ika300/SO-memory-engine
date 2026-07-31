@@ -17,12 +17,12 @@ The runner saves JSON and text outputs under `outputs/`.
 
 The Engine exposes two evidence-width views:
 
-- `independent_source_count`: fragment-level evidence breadth from Kernel traces
+- `trace_fragment_count`: fragment-level evidence breadth from Kernel traces
 - `unique_source_count`: Engine-level source-id breadth using `EngineMemory.source_id`
 
 The current fragment is also counted as a current source when it participates in a structure.
 
-This means same-source repetition and independent-source evidence can have similar recurrence while still differing in source-id breadth.
+This means same-source repetition and multi-source evidence can have similar recurrence while still differing in source-id breadth.
 
 ## Case 1: same_source_repetition
 

@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from .adapter import KernelRunner
 from .context_pack import build_context_pack

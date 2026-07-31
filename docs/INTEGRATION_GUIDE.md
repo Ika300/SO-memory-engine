@@ -40,7 +40,7 @@ The Engine provides:
 - recurring structural identities
 - unresolved tension candidates
 - structural connection candidates
-- independent-source and contextual-recurrence evidence views
+- fragment-level, source-level, and contextual-recurrence evidence views
 - a Context Pack suitable for LLM reference
 
 ## Important boundary
@@ -79,11 +79,9 @@ The Engine preserves these views:
 
 | Field | Meaning | Why it matters |
 | --- | --- | --- |
-| `independent_source_count` | Kernel trace fragment breadth. | Shows how much Kernel-level trace support exists. |
+| `trace_fragment_count` | Kernel trace fragment breadth. | Shows how much Kernel-level trace support exists. |
 | `unique_source_count` | Caller-level unique `source_id` breadth. | Shows how many caller-defined sources contributed. |
 | `contextual_recurrence_count` | Repeated overlay/context exposure. | Shows how often a structure was encountered across contexts. |
-
-The current alpha name `independent_source_count` can be read as fragment-level trace breadth. If you need caller-level source breadth, use `unique_source_count`.
 
 ## Prompt usage
 

@@ -18,7 +18,7 @@ class CompleteQuickstartTests(unittest.TestCase):
             check=True,
         )
         self.assertIn("SO Memory Engine quickstart", completed.stdout)
-        self.assertIn("curated MemoryUnits", completed.stdout)
+        self.assertIn("curated EngineMemory examples", completed.stdout)
         self.assertIn("No extractor, LLM, embedding model, or external API is used.", completed.stdout)
         self.assertIn("outputs", completed.stdout)
         self.assertTrue((PROJECT_ROOT / "outputs" / "engine_quickstart" / "context_pack.txt").exists())

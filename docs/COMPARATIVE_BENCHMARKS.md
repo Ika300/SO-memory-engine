@@ -1,4 +1,4 @@
-﻿# Comparative Benchmarks
+# Comparative Benchmarks
 
 Comparative benchmarks test whether SO Memory Engine exposes a memory distinction that simpler context methods can blur.
 

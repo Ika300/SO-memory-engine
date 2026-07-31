@@ -1,4 +1,4 @@
-﻿# GitHub Publication Steps
+# GitHub Publication Steps
 
 This file is a practical checklist for publishing SO Memory Engine as a new GitHub repository.
 

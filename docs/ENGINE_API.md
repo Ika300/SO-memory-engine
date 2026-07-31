@@ -25,7 +25,6 @@ result = engine.build_context(
             relations=[
                 EngineRelation("memory", "structure", "bridge", 0.8, False),
             ],
-            bridge_potential=0.8,
         ),
     ],
 )
@@ -51,10 +50,12 @@ Common optional fields:
 - `relations`
 - `source_id`
 - `space_id`
-- score fields such as `importance`, `persistence`, `novelty`, `tension_score`
+- score fields such as `importance`, `persistence`, `novelty`, `bridge_potential`, `tension_score`
 - `metadata`
 
 The Engine does not infer labels. If labels are supplied, they are caller-owned structure. If labels are omitted, the underlying Kernel preserves content as a single anchor.
+
+`content` and `current_message` are preserved as trace text. The Engine does not infer structure from them.
 
 If relations are supplied, labels must also be supplied and relation endpoints must reference existing labels.
 
@@ -145,17 +146,23 @@ Use `result.to_dict()` for JSON-safe output.
 
 | Field | Meaning |
 | --- | --- |
-| `independent_source_count` | Kernel trace fragment breadth. |
+| `trace_fragment_count` | Kernel trace fragment breadth. |
 | `unique_source_count` | Engine-level unique `source_id` breadth. |
 | `unique_source_ids` | Source ids used for Engine-level breadth. |
 | `contextual_recurrence_count` | Repeated overlay/context exposure. |
 
-The current alpha name `independent_source_count` is kept for API stability. Read it as Kernel trace fragment breadth, not caller-level source-id breadth.
+`independent_source_count` remains available as a backward-compatible Python property for the old alpha name, but new code should use `trace_fragment_count`.
 
 This matters because the Engine must distinguish:
 
 - the same source seen many times
 - multiple independent sources
+
+### Score fields
+
+`bridge_potential` is an optional caller-supplied score from `0.0` to `1.0` indicating that a memory is likely to participate in bridge/connection behavior. It is not required. Relation `strength` belongs to a specific `EngineRelation`; `bridge_potential` is a memory-level signal.
+
+`tension_score` is an optional memory-level signal for tension behavior.
 
 ### ContextPack
 

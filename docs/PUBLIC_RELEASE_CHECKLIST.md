@@ -1,4 +1,4 @@
-﻿# Public Release Checklist
+# Public Release Checklist
 
 SO Memory Engine is not ready for public release until the items below are intentionally resolved.
 
@@ -15,22 +15,7 @@ SO Memory Engine is not ready for public release until the items below are inten
 - [x] Add a `LICENSE` file.
 - [x] Update `pyproject.toml` license metadata.
 
-## Kernel dependency
-
-Current local development uses a sibling-folder bridge:
-
-```text
-SO_Memory_Engine
-SO_Memory_Kernel
-```
-
-Before public release, choose one of these:
-
-1. publish/install SO Memory Kernel as a package dependency;
-2. vendor the required Kernel code intentionally;
-3. document sibling checkout setup clearly.
-
-Do not silently hide this dependency.
+## Kernel dependency\n\n- [x] Keep Kernel as a separate public repository.\n- [x] Declare Kernel as a Git dependency in Engine `pyproject.toml`.\n- [x] Document manual sibling-repository setup for local Kernel development.\n- [x] Do not silently hide this dependency.\n\nDo not vendor Kernel into Engine unless there is a strong reason.
 
 ## API stability
 

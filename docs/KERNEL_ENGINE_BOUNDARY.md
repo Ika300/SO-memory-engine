@@ -1,4 +1,4 @@
-﻿# Kernel / Engine Boundary
+# Kernel / Engine Boundary
 
 ## Kernel
 

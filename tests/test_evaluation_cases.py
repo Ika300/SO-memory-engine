@@ -39,8 +39,8 @@ class EvaluationCaseTests(unittest.TestCase):
         same_result = same_source_repetition_case().run()
         independent_result = independent_sources_case().run()
         self.assertGreaterEqual(
-            independent_result.evidence_summary.independent_source_count,
-            same_result.evidence_summary.independent_source_count,
+            independent_result.evidence_summary.trace_fragment_count,
+            same_result.evidence_summary.trace_fragment_count,
         )
         self.assertGreaterEqual(len(independent_result.active_memories), 1)
 

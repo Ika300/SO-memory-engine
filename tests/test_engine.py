@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from pathlib import Path
 import sys
@@ -78,7 +78,7 @@ class MemoryEngineTests(unittest.TestCase):
                 ),
             ],
         )
-        self.assertGreaterEqual(result.evidence_summary.independent_source_count, 1)
+        self.assertGreaterEqual(result.evidence_summary.trace_fragment_count, 1)
         self.assertGreaterEqual(result.evidence_summary.contextual_recurrence_count, 1)
 
     def test_no_semantic_dictionary_is_used_for_unrelated_labels(self) -> None:

@@ -41,10 +41,10 @@ def build_evidence_summary(kernel_result, memories: list[EngineMemory]) -> Evide
         if source_id not in unique_source_ids:
             unique_source_ids.append(source_id)
 
-    independent_count = max(evidence.independent_source_count, len(independent_fragment_ids))
+    trace_count = max(evidence.independent_source_count, len(independent_fragment_ids))
     contextual_count = max(evidence.contextual_recurrence_count, len(contextual_overlay_ids))
     return EvidenceSummary(
-        independent_source_count=independent_count,
+        trace_fragment_count=trace_count,
         contextual_recurrence_count=contextual_count,
         independent_source_fragment_ids=independent_fragment_ids,
         contextual_recurrence_overlay_ids=contextual_overlay_ids,
@@ -64,7 +64,7 @@ def build_recurring_structures(kernel_result) -> list[RecurringStructure]:
                 center_candidate=group.center_candidate,
                 member_nodes=list(group.member_nodes),
                 occurrence_count=group.occurrence_count,
-                independent_source_count=group.independent_source_count,
+                trace_fragment_count=group.independent_source_count,
                 contextual_recurrence_count=group.contextual_recurrence_count,
                 source_fragment_ids=list(group.source_fragment_ids),
             )
@@ -72,7 +72,7 @@ def build_recurring_structures(kernel_result) -> list[RecurringStructure]:
     structures.sort(
         key=lambda item: (
             item.occurrence_count,
-            item.independent_source_count,
+            item.trace_fragment_count,
             item.contextual_recurrence_count,
         ),
         reverse=True,

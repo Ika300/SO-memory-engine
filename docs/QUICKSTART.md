@@ -56,7 +56,6 @@ memories = [
         relations=[
             EngineRelation("memory", "structure", "bridge", 0.8, False),
         ],
-        bridge_potential=0.8,
         source_id="note_001",
     )
 ]
@@ -118,4 +117,4 @@ Common validation errors include:
 
 The Engine starts after structure exists.
 
-If raw conversations need to become MemoryUnits, that is an extractor problem, not an Engine problem. Keeping this boundary clear prevents weak extraction from being mistaken for weak Engine behavior.
+If raw conversations need to become structured memories, that is an extraction-layer problem, not an Engine problem. The Engine expects `EngineMemory` objects or equivalent structured memory data. `current_message` is preserved as trace text; the Engine does not infer structure from it.

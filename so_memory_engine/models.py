@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -112,9 +112,14 @@ class RecurringStructure:
     center_candidate: str
     member_nodes: list[str]
     occurrence_count: int
-    independent_source_count: int
+    trace_fragment_count: int
     contextual_recurrence_count: int
     source_fragment_ids: list[str]
+
+    @property
+    def independent_source_count(self) -> int:
+        """Backward-compatible alias for the old alpha name."""
+        return self.trace_fragment_count
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -146,11 +151,16 @@ class StructuralConnection:
 
 @dataclass(slots=True)
 class EvidenceSummary:
-    independent_source_count: int
+    trace_fragment_count: int
     contextual_recurrence_count: int
     independent_source_fragment_ids: list[str]
     contextual_recurrence_overlay_ids: list[str]
     unique_source_ids: list[str] = field(default_factory=list)
+
+    @property
+    def independent_source_count(self) -> int:
+        """Backward-compatible alias for the old alpha name."""
+        return self.trace_fragment_count
 
     @property
     def unique_source_count(self) -> int:
@@ -202,7 +212,7 @@ class ContextPack:
         lines.append(f"Current message: {self.current_message}")
         lines.append("")
         lines.append("Evidence summary:")
-        lines.append(f"- independent fragment count: {self.evidence_summary.independent_source_count}")
+        lines.append(f"- trace fragment count: {self.evidence_summary.trace_fragment_count}")
         lines.append(f"- unique source count: {self.evidence_summary.unique_source_count}")
         lines.append(f"- contextual recurrence count: {self.evidence_summary.contextual_recurrence_count}")
         if self.active_memories:

@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from pathlib import Path
 import sys
@@ -97,7 +97,7 @@ def main() -> None:
         print("  - none")
     print()
     print("Evidence identity:")
-    print(f"  - independent fragment count: {evidence.independent_source_count}")
+    print(f"  - trace fragment count: {evidence.trace_fragment_count}")
     print(f"  - unique source count: {evidence.unique_source_count}")
     print(f"  - contextual recurrence count: {evidence.contextual_recurrence_count}")
     print()

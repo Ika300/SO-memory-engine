@@ -9,7 +9,7 @@ The purpose is to prevent the platform from becoming a mixed pile of Engine logi
 The public repository should show the Engine first.
 
 ```text
-curated MemoryUnits
+curated EngineMemory examples
         ->
 SO Memory Engine
         ->
@@ -77,7 +77,7 @@ It should not become:
 
 Extraction is a separate layer.
 
-An extractor turns raw input into Engine-ready MemoryUnits. It should preserve evidence and uncertainty.
+An extractor turns raw input into Engine-ready structured memories. It should preserve evidence and uncertainty.
 
 Extractor Pro should eventually handle:
 
@@ -88,7 +88,7 @@ Extractor Pro should eventually handle:
 - review queue output;
 - readiness reporting;
 - provenance manifests;
-- MemoryUnit export.
+- EngineMemory export.
 
 ## 6. Engine Pro responsibility
 
@@ -131,7 +131,7 @@ The user's own LLM or application uses that context.
 ### Public / Free
 
 - Engine source;
-- curated MemoryUnit quickstart;
+- curated EngineMemory quickstart;
 - tests;
 - benchmarks;
 - integration docs;

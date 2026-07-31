@@ -11,8 +11,8 @@ except ModuleNotFoundError as exc:  # pragma: no cover - exercised by installati
         raise
     raise ModuleNotFoundError(
         "SO Memory Engine requires SO Memory Kernel. "
-        "For local development, clone SO_Memory_Kernel next to SO_Memory_Engine and run: "
-        "py -3 -m pip install -e ..\\SO_Memory_Kernel"
+        "From SO_Memory_Engine, run: py -3 -m pip install -e . "
+        "If direct Git dependency installation fails, see docs/INSTALLATION.md."
     ) from exc
 
 from .models import EngineMemory, EngineRelation, MemoryEngineInput

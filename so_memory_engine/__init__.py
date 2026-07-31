@@ -1,4 +1,4 @@
-﻿from .engine import MemoryEngine
+from .engine import MemoryEngine
 from .models import (
     ActiveMemory,
     ContextPack,

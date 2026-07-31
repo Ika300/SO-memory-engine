@@ -1,4 +1,4 @@
-﻿# Evaluation Principles
+# Evaluation Principles
 
 SO Memory Engine should be evaluated in a way that can survive skepticism.
 
@@ -68,7 +68,7 @@ Repeated contextual exposure is useful, but it is not the same as independent so
 
 A benchmark should keep these quantities separate when possible:
 
-- independent fragment count
+- trace fragment count
 - unique source count
 - contextual recurrence count
 

@@ -1,4 +1,4 @@
-﻿# Benchmark Strategy
+# Benchmark Strategy
 
 SO Memory Engine should not be benchmarked as a vector database.
 
@@ -158,7 +158,7 @@ The benchmark runner also reports:
 - recurring structures
 - unresolved tensions
 - structural connections
-- independent fragment count
+- trace fragment count
 - unique source count
 - contextual recurrence count
 - elapsed milliseconds

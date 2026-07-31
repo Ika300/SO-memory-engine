@@ -1,4 +1,4 @@
-﻿# SO Memory Engine Design
+# SO Memory Engine Design
 
 ## Objective
 
