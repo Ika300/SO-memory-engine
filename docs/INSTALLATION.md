@@ -2,7 +2,66 @@
 
 SO Memory Engine currently depends on SO Memory Kernel.
 
-During alpha development, both repositories should be cloned side by side.
+The easiest alpha install is now one repository plus editable install.
+
+## 1. Clone Engine
+
+```bash
+git clone https://github.com/Ika300/SO-memory-engine.git
+cd SO-memory-engine
+```
+
+## 2. Install Engine
+
+Windows:
+
+```bash
+py -3 -m pip install -e .
+```
+
+Non-Windows:
+
+```bash
+python -m pip install -e .
+```
+
+This installs SO Memory Kernel from its GitHub repository through the Engine dependency.
+
+## 3. Run quickstart
+
+Windows:
+
+```bash
+py -3 quickstart.py
+```
+
+Non-Windows:
+
+```bash
+python quickstart.py
+```
+
+The quickstart writes:
+
+```text
+outputs/engine_quickstart/context_pack.txt
+outputs/engine_quickstart/context_pack.json
+outputs/engine_quickstart/engine_result.json
+```
+
+## Windows helper
+
+You may also run:
+
+```bat
+setup_engine_demo.bat
+```
+
+This installs the Engine and runs the Engine-only quickstart.
+
+## Manual sibling-repository setup
+
+Use this if you want to develop Kernel and Engine side by side, or if direct Git dependency installation fails. The default install uses the GitHub Kernel package; this manual setup restores local editable Kernel development.
 
 Recommended local layout:
 
@@ -12,30 +71,20 @@ Desktop/
   SO_Memory_Engine/
 ```
 
-## 1. Clone both repositories
+Clone both repositories:
 
 ```bash
 git clone https://github.com/Ika300/so-memory-kernel.git SO_Memory_Kernel
 git clone https://github.com/Ika300/SO-memory-engine.git SO_Memory_Engine
 ```
 
-## 2. Install Kernel locally
-
-From `SO_Memory_Engine`:
+Install Kernel locally from `SO_Memory_Engine`:
 
 ```bash
 py -3 -m pip install -e ..\SO_Memory_Kernel
 ```
 
-On non-Windows systems:
-
-```bash
-python -m pip install -e ../SO_Memory_Kernel
-```
-
-## 3. Install Engine locally
-
-From `SO_Memory_Engine`:
+Install Engine locally:
 
 ```bash
 py -3 -m pip install -e .
@@ -44,10 +93,11 @@ py -3 -m pip install -e .
 On non-Windows systems:
 
 ```bash
+python -m pip install -e ../SO_Memory_Kernel
 python -m pip install -e .
 ```
 
-## 4. Verify
+## Verify
 
 ```bash
 py -3 quickstart.py
@@ -64,20 +114,8 @@ Behavioral benchmarks pass
 Comparative benchmarks pass
 ```
 
-## Windows helper
-
-You may run:
-
-```bat
-setup_engine_demo.bat
-```
-
-This installs Kernel and Engine locally, then runs the Engine-only quickstart.
-
 ## Current alpha limitation
 
 SO Memory Kernel is not yet assumed to be available from PyPI.
 
-That means `pip install so-memory-engine` is not the current installation path. The current alpha path is editable local installation from cloned repositories.
-
-This is intentionally stated plainly to avoid giving users a broken install command.
+That means the current install path relies on GitHub or local editable installation. This is intentionally stated plainly to avoid giving users a broken PyPI-style expectation.

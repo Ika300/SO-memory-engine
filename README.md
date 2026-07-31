@@ -5,7 +5,7 @@
 **Structural memory context for AI agents and applications.**
 
 ```text
-curated MemoryUnits
+caller-supplied structured memories
     -> SO Memory Engine
     -> Context Pack
     -> your own LLM / agent / application
@@ -17,6 +17,55 @@ Vector memory retrieves what is similar.
 SO Memory Engine observes what returns.
 
 This repository is currently an alpha prototype.
+
+## What goes in, what comes out
+
+Input is structured memory supplied by your application:
+
+```json
+{
+  "content": "I keep returning to memory and structure.",
+  "labels": ["memory", "structure"],
+  "source_id": "note_001"
+}
+```
+
+Output is a Context Pack:
+
+```json
+{
+  "returning_memories": ["memory / structure returned"],
+  "recurring_structures": ["Bridge: memory <-> structure"],
+  "unresolved_tensions": ["memory / similarity"],
+  "evidence_summary": {
+    "unique_source_count": 2,
+    "contextual_recurrence_count": 5
+  }
+}
+```
+
+The demo uses curated examples, but the product boundary is broader: any caller can provide structured memories from forms, logs, human review, rules, or another extraction layer.
+
+## Why Context Packs matter
+
+A normal memory system may retrieve similar text. SO Memory Engine is meant to surface structural context.
+
+Example:
+
+```text
+Past memory A: the user wants independence.
+Past memory B: the user worries about stable income.
+Current message: the user is considering leaving a job.
+```
+
+The useful context is not just "job" or "income" similarity. The useful context may be:
+
+```text
+returning structure: independence
+unresolved tension: independence <-> income stability
+```
+
+That is the kind of structural context an external LLM or agent can use without SO itself becoming the LLM.
 
 ## 30-second idea
 
@@ -31,7 +80,7 @@ Naive interpretation:
 5 supporting pieces of evidence
 
 SO Memory Engine context:
-1 independent source
+1 unique source
 5 contextual recurrences
 ```
 
@@ -39,20 +88,16 @@ Both facts matter. They should not be collapsed into one number.
 
 ## Quickstart
 
-First-time local setup requires SO Memory Kernel next to this repository.
+Clone this repository:
 
-Recommended layout:
-
-```text
-Desktop/
-  SO_Memory_Kernel/
-  SO_Memory_Engine/
+```bash
+git clone https://github.com/Ika300/SO-memory-engine.git
+cd SO-memory-engine
 ```
 
 Install locally:
 
 ```bash
-py -3 -m pip install -e ..\SO_Memory_Kernel
 py -3 -m pip install -e .
 ```
 
@@ -62,13 +107,18 @@ Then run the Engine-only demo:
 py -3 quickstart.py
 ```
 
-Or on non-Windows systems:
+On non-Windows systems:
 
 ```bash
+python -m pip install -e .
 python quickstart.py
 ```
 
-The quickstart uses curated MemoryUnits so the Engine behavior is visible immediately. It writes outputs to:
+`pip install -e .` installs SO Memory Kernel from its GitHub repository.
+
+If that fails, see [Installation](docs/INSTALLATION.md) for the manual sibling-repository setup.
+
+The quickstart writes outputs to:
 
 ```text
 outputs/engine_quickstart/context_pack.txt
@@ -144,6 +194,18 @@ result = MemoryEngine().build_context(
 print(result.context_pack.to_prompt_text())
 ```
 
+## Evidence count names
+
+Current alpha names expose two levels of evidence breadth:
+
+| Field | Meaning |
+| --- | --- |
+| `independent_source_count` | Kernel trace fragment breadth. |
+| `unique_source_count` | Caller-level unique `source_id` breadth. |
+| `contextual_recurrence_count` | Repeated overlay/context exposure. |
+
+The names may become clearer in a future version, but they are kept stable for this alpha API.
+
 ## Input boundary
 
 The Engine expects structured memory. Your application owns extraction.
@@ -152,7 +214,7 @@ A production system may create MemoryUnits from forms, logs, human review, rules
 
 ## Current free/demo boundary
 
-The free public repository demonstrates the Engine itself using curated MemoryUnits.
+The free public repository demonstrates the Engine itself using caller-supplied structured memories.
 
 It does not claim production extraction from arbitrary raw conversations. That problem belongs to a separate extractor layer.
 
@@ -177,13 +239,13 @@ The benchmarks focus on structural-memory behavior rather than vector-search spe
 
 SO Memory Engine depends on SO Memory Kernel.
 
-During alpha development, install Kernel locally from the sibling repository:
+The default install path now pulls Kernel directly from GitHub:
 
 ```bash
-py -3 -m pip install -e ..\SO_Memory_Kernel
+py -3 -m pip install -e .
 ```
 
-See [Installation](docs/INSTALLATION.md) for details.
+For local Kernel development, see [Installation](docs/INSTALLATION.md).
 
 ## License
 

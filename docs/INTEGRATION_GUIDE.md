@@ -1,4 +1,4 @@
-﻿# Integration Guide
+# Integration Guide
 
 SO Memory Engine is designed to sit between an application's memory store and its response generator.
 
@@ -75,11 +75,15 @@ Example:
 - Ten fragments from one original note may mean strong contextual recurrence.
 - Ten fragments from ten independent notes may mean stronger source breadth.
 
-The Engine preserves both views:
+The Engine preserves these views:
 
-- `independent_source_count`: fragment-level Kernel trace breadth
-- `unique_source_count`: caller-level source-id breadth
-- `contextual_recurrence_count`: repeated overlay/context exposure
+| Field | Meaning | Why it matters |
+| --- | --- | --- |
+| `independent_source_count` | Kernel trace fragment breadth. | Shows how much Kernel-level trace support exists. |
+| `unique_source_count` | Caller-level unique `source_id` breadth. | Shows how many caller-defined sources contributed. |
+| `contextual_recurrence_count` | Repeated overlay/context exposure. | Shows how often a structure was encountered across contexts. |
+
+The current alpha name `independent_source_count` can be read as fragment-level trace breadth. If you need caller-level source breadth, use `unique_source_count`.
 
 ## Prompt usage
 

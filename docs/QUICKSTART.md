@@ -18,7 +18,7 @@ On non-Windows systems:
 python quickstart.py
 ```
 
-The demo uses curated MemoryUnits so the Engine behavior is visible immediately.
+The Engine receives caller-supplied structured memories. The demo uses curated examples so the Engine behavior is visible immediately.
 
 It does not use:
 

@@ -1,4 +1,4 @@
-﻿# Engine API
+# Engine API
 
 SO Memory Engine is the AI-app-facing layer above SO Memory Kernel.
 
@@ -143,10 +143,14 @@ Use `result.to_dict()` for JSON-safe output.
 
 `evidence_summary` includes both fragment-level and source-id-level evidence views:
 
-- `independent_source_count`: Kernel trace fragment breadth
-- `unique_source_count`: Engine-level unique `source_id` breadth
-- `unique_source_ids`: source ids used for Engine-level breadth
-- `contextual_recurrence_count`: repeated overlay/context exposure
+| Field | Meaning |
+| --- | --- |
+| `independent_source_count` | Kernel trace fragment breadth. |
+| `unique_source_count` | Engine-level unique `source_id` breadth. |
+| `unique_source_ids` | Source ids used for Engine-level breadth. |
+| `contextual_recurrence_count` | Repeated overlay/context exposure. |
+
+The current alpha name `independent_source_count` is kept for API stability. Read it as Kernel trace fragment breadth, not caller-level source-id breadth.
 
 This matters because the Engine must distinguish:
 
