@@ -1,10 +1,19 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from .kernel_bridge import ensure_kernel_import_path
 
 ensure_kernel_import_path()
 
-from so_memory import MemoryFragment, MemoryKernel, MemoryRelation  # noqa: E402
+try:
+    from so_memory import MemoryFragment, MemoryKernel, MemoryRelation  # noqa: E402
+except ModuleNotFoundError as exc:  # pragma: no cover - exercised by installation environment
+    if exc.name != "so_memory":
+        raise
+    raise ModuleNotFoundError(
+        "SO Memory Engine requires SO Memory Kernel. "
+        "For local development, clone SO_Memory_Kernel next to SO_Memory_Engine and run: "
+        "py -3 -m pip install -e ..\\SO_Memory_Kernel"
+    ) from exc
 
 from .models import EngineMemory, EngineRelation, MemoryEngineInput
 

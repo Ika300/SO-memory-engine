@@ -1,4 +1,4 @@
-﻿[build-system]
+[build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
@@ -32,7 +32,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/Ika300/so-memory-engine"
+Homepage = "https://github.com/Ika300/SO-memory-engine"
 Kernel = "https://github.com/Ika300/so-memory-kernel"
 
 [tool.setuptools.packages.find]

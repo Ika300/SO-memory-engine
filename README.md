@@ -1,4 +1,4 @@
-﻿# SO Memory Engine
+# SO Memory Engine
 
 **A structural context construction layer for AI memory.**
 
@@ -27,6 +27,17 @@ SO Memory Engine context:
 ```
 
 Both facts matter. They should not be collapsed into one number.
+
+## Installation
+
+Alpha local installation uses editable installs for both Kernel and Engine.
+
+```bash
+py -3 -m pip install -e ..\SO_Memory_Kernel
+py -3 -m pip install -e .
+```
+
+See [Installation](docs/INSTALLATION.md).
 
 ## Try it in one command
 
@@ -260,6 +271,7 @@ Comparative benchmarks currently focus on Evidence Identity using transparent re
 
 ## Documentation
 
+- [Installation](docs/INSTALLATION.md)
 - [Quickstart](docs/QUICKSTART.md)
 - [Engine API](docs/ENGINE_API.md)
 - [Integration Guide](docs/INTEGRATION_GUIDE.md)
@@ -285,5 +297,3 @@ py -3 -m unittest discover -s tests -p '*test*.py' -v
 ## Current status
 
 Alpha prototype. The core API, validation, examples, evaluation cases, behavioral benchmarks, and serialization are in place. Public release packaging and install flow are not finalized yet.
-
-
