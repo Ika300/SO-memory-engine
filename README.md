@@ -1,13 +1,49 @@
 ﻿# SO Memory Engine
 
-**Structural memory context for AI applications.**
+**A structural context construction layer for AI memory.**
 
 Vector memory retrieves what is similar.  
 SO Memory Engine observes what returns.
 
-SO Memory Engine is an application-facing memory layer built above [SO Memory Kernel](https://github.com/Ika300/so-memory-kernel). It prepares compact, traceable memory context for an AI app without using embeddings, semantic dictionaries, fuzzy merging, or LLM calls.
+If you are building AI agents with long-term memory, similarity search is not always enough. The useful context is often not the nearest old text. It is the structure that keeps returning, the tension that remains unresolved, or the evidence pattern that changed.
 
-This repository is currently a local development prototype.
+SO Memory Engine builds a compact **Context Pack** from caller-supplied structured memory fragments. It does not call an LLM, use embeddings, use semantic dictionaries, or perform fuzzy semantic merging.
+
+This repository is currently an alpha prototype.
+
+## Try it in one command
+
+From this repository:
+
+```bash
+py -3 examples\quickstart_demo.py
+```
+
+You should see output like:
+
+```text
+SO Memory Engine quickstart
+===========================
+
+Active memories selected for context:
+  - note_001: memory / structure / similarity
+  - note_002: structure / meaning / flattening
+
+Returning structures:
+  - Tension:flattening
+  - Bridge:memory<->structure
+  - Tension:memory
+
+Recurring structures:
+  - Bridge: memory / structure (occurrences=5)
+
+Evidence identity:
+  - independent fragment count: 3
+  - unique source count: 2
+  - contextual recurrence count: 5
+```
+
+The point is stable: the Engine returns structural memory context, not a generated answer.
 
 ## What problem does it solve?
 
@@ -15,20 +51,20 @@ Most AI memory systems begin with similarity search:
 
 > Which old text is closest to the current message?
 
-SO Memory Engine asks a different question:
+SO Memory Engine asks different questions:
 
 > What structure is returning?  
 > Which relation keeps appearing?  
 > Is this evidence independent, or the same evidence encountered repeatedly?  
 > What unresolved tension or connection should be available as context?
 
-The result is not a generated answer. It is a **Context Pack** that an AI application can use as optional grounding.
+The result is not a final assistant response. It is a Context Pack that an AI application can pass to an LLM as optional grounding.
 
 ## What it is
 
 SO Memory Engine is:
 
-- a memory-context preparation layer
+- a structural context construction layer for AI memory
 - a bridge between application memory and SO Memory Kernel
 - a way to expose recurrence, return, tension, connection, and evidence history
 - a tool for giving an LLM structured memory without letting the LLM invent that memory
@@ -73,7 +109,7 @@ LLM generates language.
 Application owns storage and UX.
 ```
 
-## Quickstart
+## Basic use
 
 ```python
 from so_memory_engine import EngineMemory, EngineRelation, MemoryEngine
@@ -132,6 +168,7 @@ This distinction matters because the same structure seen many times is not the s
 ## Demos
 
 ```bash
+py -3 examples\quickstart_demo.py
 py -3 examples\llm_memory_engine_demo.py
 py -3 examples\chat_memory_loop_demo.py
 py -3 examples\agent_memory_demo.py
@@ -147,7 +184,7 @@ Demo outputs are saved under `outputs/` as JSON and text files.
 py -3 benchmarks\run_benchmarks.py
 ```
 
-Engine benchmarks are behavioral benchmarks. They test memory properties such as Return, evidence identity, noise separation, and direction preservation.
+Engine benchmarks are behavioral benchmarks. They test memory properties such as structural recurrence, evidence identity, structural return, noise rejection, and direction preservation.
 
 ## Documentation
 
@@ -155,6 +192,7 @@ Engine benchmarks are behavioral benchmarks. They test memory properties such as
 - [Engine API](docs/ENGINE_API.md)
 - [Integration Guide](docs/INTEGRATION_GUIDE.md)
 - [Benchmarks](docs/BENCHMARKS.md)
+- [Benchmark Strategy](docs/BENCHMARK_STRATEGY.md)
 - [AI App Demos](docs/AI_APP_DEMOS.md)
 - [Evaluation Cases](docs/EVALUATION_CASES.md)
 - [Kernel / Engine Boundary](docs/KERNEL_ENGINE_BOUNDARY.md)
@@ -172,4 +210,4 @@ py -3 -m unittest discover -s tests -p '*test*.py' -v
 
 ## Current status
 
-Local development prototype. The core API, validation, examples, evaluation cases, benchmarks, and serialization are in place. Public release packaging is not finalized yet.
+Alpha prototype. The core API, validation, examples, evaluation cases, behavioral benchmarks, and serialization are in place. Public release packaging and install flow are not finalized yet.

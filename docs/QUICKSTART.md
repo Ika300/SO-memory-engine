@@ -4,6 +4,25 @@ This guide shows the smallest useful SO Memory Engine flow.
 
 SO Memory Engine does not parse natural language. Your application gives it the current message, prior memory fragments, and caller-owned structural labels/relations.
 
+## Fastest path
+
+From the repository root:
+
+```bash
+py -3 examples\quickstart_demo.py
+```
+
+This prints:
+
+- the current message
+- structurally returning memory
+- active memories
+- recurring structures
+- unresolved tensions
+- structural connections
+- evidence counts
+- a Context Pack preview
+
 ## 1. Create an Engine
 
 ```python
@@ -82,11 +101,3 @@ Common validation errors include:
 - unsupported relation types
 - scores outside `0.0` to `1.0`
 - valence outside `-1.0` to `1.0`
-
-## 7. Run the demo
-
-```bash
-py -3 examples\llm_memory_engine_demo.py
-```
-
-Outputs are saved under `outputs/`.
