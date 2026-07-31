@@ -9,7 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 class CompleteQuickstartTests(unittest.TestCase):
-    def test_top_level_quickstart_runs_complete_free_pipeline(self) -> None:
+    def test_top_level_quickstart_runs_engine_only_demo(self) -> None:
         completed = subprocess.run(
             [sys.executable, str(PROJECT_ROOT / "quickstart.py")],
             cwd=PROJECT_ROOT,
@@ -17,27 +17,13 @@ class CompleteQuickstartTests(unittest.TestCase):
             capture_output=True,
             check=True,
         )
-        self.assertIn("SO Memory Engine + Extractor Free quickstart", completed.stdout)
-        self.assertIn("historical memory units", completed.stdout)
-        self.assertIn("Open:", completed.stdout)
-        self.assertTrue((PROJECT_ROOT / "outputs" / "free_trial" / "07_context_pack.txt").exists())
-        self.assertTrue((PROJECT_ROOT / "outputs" / "free_trial" / "05_current_memory_unit.json").exists())
-
-    def test_top_level_quickstart_accepts_custom_current_message(self) -> None:
-        completed = subprocess.run(
-            [
-                sys.executable,
-                str(PROJECT_ROOT / "quickstart.py"),
-                "--current",
-                "I keep returning to work, money, and independence.",
-            ],
-            cwd=PROJECT_ROOT,
-            text=True,
-            capture_output=True,
-            check=True,
-        )
-        self.assertIn("current labels:", completed.stdout)
-        self.assertIn("Inspect the full pipeline", completed.stdout)
+        self.assertIn("SO Memory Engine quickstart", completed.stdout)
+        self.assertIn("curated MemoryUnits", completed.stdout)
+        self.assertIn("No extractor, LLM, embedding model, or external API is used.", completed.stdout)
+        self.assertIn("outputs", completed.stdout)
+        self.assertTrue((PROJECT_ROOT / "outputs" / "engine_quickstart" / "context_pack.txt").exists())
+        self.assertTrue((PROJECT_ROOT / "outputs" / "engine_quickstart" / "context_pack.json").exists())
+        self.assertTrue((PROJECT_ROOT / "outputs" / "engine_quickstart" / "engine_result.json").exists())
 
 
 if __name__ == "__main__":

@@ -2,14 +2,6 @@
 
 SO Memory Engine currently depends on SO Memory Kernel.
 
-If you only want to run the complete free trial on Windows, start here:
-
-```bat
-setup_free_trial.bat
-```
-
-This installs Kernel, Engine, bundled Extractor Free, and runs `quickstart.py`.
-
 During alpha development, both repositories should be cloned side by side.
 
 Recommended local layout:
@@ -55,25 +47,10 @@ On non-Windows systems:
 python -m pip install -e .
 ```
 
-## 4. Install bundled Extractor Free
-
-From `SO_Memory_Engine`:
-
-```bash
-py -3 -m pip install -e SO_Extractor_Free
-```
-
-On non-Windows systems:
-
-```bash
-python -m pip install -e SO_Extractor_Free
-```
-
-## 5. Verify
+## 4. Verify
 
 ```bash
 py -3 quickstart.py
-py -3 examples\quickstart_demo.py
 py -3 -m unittest discover -s tests -p '*test*.py' -v
 py -3 benchmarks\run_benchmarks.py
 py -3 benchmarks\run_comparative_benchmarks.py
@@ -82,10 +59,20 @@ py -3 benchmarks\run_comparative_benchmarks.py
 Expected current local result:
 
 ```text
-Engine tests: 35/35 passed
-Behavioral benchmarks: 6/6 passed
-Comparative benchmarks: 3/3 passed
+Engine tests pass
+Behavioral benchmarks pass
+Comparative benchmarks pass
 ```
+
+## Windows helper
+
+You may run:
+
+```bat
+setup_engine_demo.bat
+```
+
+This installs Kernel and Engine locally, then runs the Engine-only quickstart.
 
 ## Current alpha limitation
 

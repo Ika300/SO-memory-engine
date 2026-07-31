@@ -1,4 +1,4 @@
-﻿# Quickstart
+# Quickstart
 
 This guide shows the smallest useful SO Memory Engine flow.
 
@@ -9,19 +9,31 @@ SO Memory Engine does not parse natural language. Your application gives it the 
 From the repository root:
 
 ```bash
-py -3 examples\quickstart_demo.py
+py -3 quickstart.py
 ```
 
-This prints:
+On non-Windows systems:
 
-- the current message
-- structurally returning memory
-- active memories
-- recurring structures
-- unresolved tensions
-- structural connections
-- evidence counts
-- a Context Pack preview
+```bash
+python quickstart.py
+```
+
+The demo uses curated MemoryUnits so the Engine behavior is visible immediately.
+
+It does not use:
+
+- an extractor;
+- an LLM;
+- embeddings;
+- external APIs.
+
+The quickstart writes:
+
+```text
+outputs/engine_quickstart/context_pack.txt
+outputs/engine_quickstart/context_pack.json
+outputs/engine_quickstart/engine_result.json
+```
 
 ## 1. Create an Engine
 
@@ -101,3 +113,9 @@ Common validation errors include:
 - unsupported relation types
 - scores outside `0.0` to `1.0`
 - valence outside `-1.0` to `1.0`
+
+## Boundary
+
+The Engine starts after structure exists.
+
+If raw conversations need to become MemoryUnits, that is an extractor problem, not an Engine problem. Keeping this boundary clear prevents weak extraction from being mistaken for weak Engine behavior.
