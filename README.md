@@ -5,11 +5,28 @@
 Vector memory retrieves what is similar.  
 SO Memory Engine observes what returns.
 
-If you are building AI agents with long-term memory, similarity search is not always enough. The useful context is often not the nearest old text. It is the structure that keeps returning, the tension that remains unresolved, or the evidence pattern that changed.
-
-SO Memory Engine builds a compact **Context Pack** from caller-supplied structured memory fragments. It does not call an LLM, use embeddings, use semantic dictionaries, or perform fuzzy semantic merging.
+SO Memory Engine builds compact Context Packs from caller-supplied structured memory fragments. It does not call an LLM, use embeddings, use semantic dictionaries, or perform fuzzy semantic merging.
 
 This repository is currently an alpha prototype.
+
+## 30-second idea
+
+Repetition is not corroboration.
+
+```text
+Memory situation:
+The same claim appears 5 times,
+but all 5 appearances came from one source.
+
+Naive interpretation:
+5 supporting pieces of evidence
+
+SO Memory Engine context:
+1 independent source
+5 contextual recurrences
+```
+
+Both facts matter. They should not be collapsed into one number.
 
 ## Try it in one command
 
@@ -17,6 +34,12 @@ From this repository:
 
 ```bash
 py -3 examples\quickstart_demo.py
+```
+
+On non-Windows systems, use:
+
+```bash
+python examples/quickstart_demo.py
 ```
 
 You should see output like:
@@ -83,6 +106,35 @@ SO Memory Engine is not:
 - a storage layer
 
 The caller supplies structure. The Engine preserves and organizes it.
+
+## Where does structure come from?
+
+SO Memory Engine is agnostic about how structure is produced.
+
+Structured memory may come from:
+
+- application events and metadata
+- user-defined labels and relations
+- rule-based parsers
+- LLM structured output
+- knowledge graphs
+- external extraction systems
+- SO-based structural extraction systems
+
+The Engine begins after structure exists.
+
+This boundary is intentional. The public Engine does not claim to understand arbitrary natural language by itself. It accepts structured fragments and reconstructs structural memory context from them.
+
+## Relationship to vector retrieval
+
+SO Memory Engine does not need to be positioned as an enemy of vector search.
+
+```text
+Vector retrieval finds candidates.
+SO reconstructs structural context.
+```
+
+A practical AI system may use vector retrieval to narrow a large memory store, then use SO Memory Engine to separate recurrence, source evidence, unresolved tension, and structural return inside the candidate set.
 
 ## Architecture
 
@@ -161,9 +213,25 @@ Use `result.to_dict()` for JSON-safe output.
 The Engine preserves two different evidence views:
 
 - **Independent source evidence**: who supplied the structure?
-- **Contextual recurrence evidence**: how many overlay contexts exposed it?
+- **Contextual recurrence evidence**: how many contexts exposed it?
 
 This distinction matters because the same structure seen many times is not the same as many independent sources saying the same thing. Both are useful, but they should remain distinguishable.
+
+## What the current tests prove
+
+Current measured status:
+
+```text
+Engine tests: 31/31 passed
+Behavioral benchmarks: 6/6 passed
+External API calls: 0
+Embeddings required: No
+LLM required: No
+```
+
+These tests prove that the alpha Engine preserves its intended structural behaviors on the included test cases.
+
+They do not yet prove that SO Memory Engine improves every AI application, outperforms all retrieval systems, or handles arbitrary natural language extraction by itself. Comparative application benchmarks are future work.
 
 ## Demos
 
@@ -193,6 +261,7 @@ Engine benchmarks are behavioral benchmarks. They test memory properties such as
 - [Integration Guide](docs/INTEGRATION_GUIDE.md)
 - [Benchmarks](docs/BENCHMARKS.md)
 - [Benchmark Strategy](docs/BENCHMARK_STRATEGY.md)
+- [Evaluation Principles](docs/EVALUATION_PRINCIPLES.md)
 - [AI App Demos](docs/AI_APP_DEMOS.md)
 - [Evaluation Cases](docs/EVALUATION_CASES.md)
 - [Kernel / Engine Boundary](docs/KERNEL_ENGINE_BOUNDARY.md)

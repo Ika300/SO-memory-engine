@@ -11,9 +11,56 @@ The Engine should be benchmarked as a structural context construction layer for 
 Vector memory retrieves what is similar.  
 SO Memory Engine observes what returns.
 
-The benchmark suite should therefore measure whether the Engine preserves structural memory properties that ordinary similarity retrieval tends to blur.
+A practical system can also combine them:
 
-## Five benchmark pillars
+```text
+Vector retrieval finds candidates.
+SO reconstructs structural context.
+```
+
+This means SO can sit after keyword, metadata, or vector retrieval. It does not need to replace them.
+
+## Two benchmark layers
+
+### 1. Behavioral benchmarks
+
+Behavioral benchmarks test whether the Engine preserves its own intended memory behaviors.
+
+They answer:
+
+> Given structured memory fragments, does the Engine preserve recurrence, return, evidence identity, unresolved tension, directionality, and noise rejection?
+
+Current measured status:
+
+```text
+Behavioral benchmarks: 6/6 passed
+Engine tests: 31/31 passed
+External API calls: 0
+Embeddings required: No
+LLM required: No
+```
+
+These numbers should be updated only after rerunning the suite.
+
+### 2. Comparative application benchmarks
+
+Comparative benchmarks are future work.
+
+They should test whether an AI application performs better when SO Memory Engine is used as part of its memory pipeline.
+
+Potential baselines:
+
+- no memory
+- recent memory
+- keyword search
+- simple similarity retrieval
+- embedding retrieval
+- SO Memory Engine
+- embedding retrieval plus SO
+
+These tests should be added only when they can be measured honestly.
+
+## Five behavioral benchmark pillars
 
 ### 1. Structure Recurrence
 
@@ -47,7 +94,7 @@ Current coverage:
 
 - `reactivation`
 
-### 4. Conflict and Tension Discovery
+### 4. Conflict and Tension Preservation
 
 Can the Engine preserve unresolved tensions without pretending to resolve them?
 
@@ -58,9 +105,11 @@ Current coverage:
 - tension-related fields in evaluation cases
 - future benchmark expansion needed
 
-### 5. Noise Rejection
+### 5. Noise Rejection and Direction Preservation
 
 Can the Engine avoid activating unrelated memories by semantic guessing?
+
+Can it preserve directed relations instead of collapsing reversed structure into the same identity?
 
 This is central to the project. The Engine should not invent meaning or merge concepts by hidden dictionary.
 
@@ -68,6 +117,37 @@ Current coverage:
 
 - `noise_no_return`
 - `direction_preservation`
+
+## First recommended comparative experiment
+
+The first comparative experiment should focus on Evidence Identity.
+
+Question:
+
+> How broadly supported is this recurring concern?
+
+Dataset shape:
+
+- same-source paraphrases
+- independent sources
+- similar but irrelevant noise
+- different wording with the same structure
+- unrelated noise
+
+Expected comparison target:
+
+```text
+Naive similarity retrieval:
+Repeated paraphrases may look like multiple pieces of evidence.
+
+SO Memory Engine:
+Contextual recurrence and independent source evidence remain separate.
+
+Embedding retrieval + SO:
+Retrieval narrows candidates; SO reconstructs evidence structure.
+```
+
+This benchmark should be built to reveal both strengths and limits. It should not be tuned only to make SO win.
 
 ## Secondary measurements
 
@@ -85,18 +165,6 @@ The benchmark runner also reports:
 
 Elapsed time is useful, but it is not the primary benchmark claim.
 
-## Future benchmark work
-
-Future benchmark work should add:
-
-- Context Pack utility tests
-- Context compression measurements
-- stronger conflict/tension cases
-- current-state reconstruction experiments
-- optional comparisons with naive recent memory, keyword search, vector search, and long context
-
-These should be added only when they can be measured honestly.
-
 ## What not to benchmark as the main claim
 
 Do not lead with:
@@ -108,10 +176,14 @@ Do not lead with:
 
 Those benchmarks pull the project onto the wrong battlefield.
 
-## Good public framing
+## What current benchmarks do not prove
 
-A good public benchmark question is:
+Current behavioral benchmarks do not prove:
 
-> Given structured memory fragments, can SO Memory Engine build a compact Context Pack that preserves recurrence, return, evidence identity, unresolved tension, and noise rejection?
+- universal improvement for all AI apps
+- superiority over every retrieval system
+- production-scale performance
+- natural-language extraction accuracy
+- automatic understanding of arbitrary raw text
 
-That is the Engine's real arena.
+They prove that the alpha Engine preserves its intended structural memory behaviors on the included cases.
