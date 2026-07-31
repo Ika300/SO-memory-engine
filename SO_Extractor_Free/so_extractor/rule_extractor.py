@@ -53,7 +53,7 @@ def extract_memory_units(messages: list[ConversationMessage]) -> list[MemoryUnit
                     source=labels[0],
                     target=labels[1],
                     relation_type=relation_type,
-                    strength=0.65 if relation_type != "association" else 0.5,
+                    strength=0.7 if relation_type != "association" else 0.5,
                     directed=relation_type in {"support", "contrast"},
                     evidence_message_ids=[message.id],
                 )

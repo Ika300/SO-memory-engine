@@ -2,12 +2,31 @@
 
 [![tests](https://github.com/Ika300/SO-memory-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/Ika300/SO-memory-engine/actions/workflows/tests.yml)
 
-**A structural context construction layer for AI memory.**
+**Try the complete free structural-memory pipeline.**
+
+```text
+conversation log
+    -> SO Extractor Free
+    -> SO Memory Engine
+    -> Context Pack
+```
+
+Run the complete free path from this repository:
+
+```bash
+py -3 quickstart.py
+```
+
+Then open:
+
+```text
+outputs/free_trial/07_context_pack.txt
+```
+
+SO Memory Engine builds compact Context Packs from caller-supplied structured memory fragments. SO Extractor Free is included so you can try the path from a small conversation log without building your own extractor first.
 
 Vector memory retrieves what is similar.  
 SO Memory Engine observes what returns.
-
-SO Memory Engine builds compact Context Packs from caller-supplied structured memory fragments. It does not call an LLM, use embeddings, use semantic dictionaries, or perform fuzzy semantic merging.
 
 This repository is currently an alpha prototype.
 
@@ -41,29 +60,34 @@ py -3 -m pip install -e .
 
 See [Installation](docs/INSTALLATION.md).
 
-## Try Engine + Extractor Free
+## Complete free quickstart
 
-This repository also includes SO Extractor Free under `SO_Extractor_Free/`.
-
-Use it when you want to try the full free path:
-
-```text
-conversation log
-    -> SO Extractor Free
-    -> SO Memory Engine
-    -> Context Pack
-```
-
-From this repository:
+Use this first:
 
 ```bash
-py -3 SO_Extractor_Free\examples\conversation_log_demo.py
-py -3 SO_Extractor_Free\examples\chatgpt_export_like_demo.py
-py -3 SO_Extractor_Free\examples\end_to_end_engine_demo.py
+py -3 quickstart.py
 ```
 
-See [Engine + Extractor Free Trial](docs/ENGINE_EXTRACTOR_FREE_TRIAL.md).
-## Try it in one command
+Use your own simple conversation JSON:
+
+```bash
+py -3 quickstart.py path\to\conversation.json
+```
+
+Use your own current message:
+
+```bash
+py -3 quickstart.py path\to\conversation.json --current "I want to work independently, but income stability worries me again."
+```
+
+The quickstart writes each stage under `outputs/free_trial/`.
+
+See:
+
+- [Engine + Extractor Free Trial](docs/ENGINE_EXTRACTOR_FREE_TRIAL.md)
+- [What You Just Saw](docs/WHAT_YOU_JUST_SAW.md)
+- [Try Your Own Data](docs/TRY_YOUR_DATA.md)
+## Engine-only quickstart
 
 From this repository:
 
@@ -296,6 +320,8 @@ Comparative benchmarks currently focus on Evidence Identity using transparent re
 ## Documentation
 
 - [Engine + Extractor Free Trial](docs/ENGINE_EXTRACTOR_FREE_TRIAL.md)
+- [What You Just Saw](docs/WHAT_YOU_JUST_SAW.md)
+- [Try Your Own Data](docs/TRY_YOUR_DATA.md)
 - [Installation](docs/INSTALLATION.md)
 - [Quickstart](docs/QUICKSTART.md)
 - [Engine API](docs/ENGINE_API.md)

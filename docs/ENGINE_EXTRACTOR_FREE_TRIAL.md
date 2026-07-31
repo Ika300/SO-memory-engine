@@ -28,7 +28,15 @@ SO Extractor Free provides a minimal answer for trials.
 
 ## Run the full free trial
 
-From the repository root:
+Start with the one-command quickstart:
+
+```bash
+py -3 quickstart.py
+```
+
+Then inspect `outputs/free_trial/07_context_pack.txt`.
+
+The individual demos are also available from the repository root:
 
 ```bash
 py -3 SO_Extractor_Free\examples\conversation_log_demo.py
