@@ -28,7 +28,13 @@ SO Extractor Free provides a minimal answer for trials.
 
 ## Run the full free trial
 
-Start with the one-command quickstart:
+For first-time Windows setup, run:
+
+```bat
+setup_free_trial.bat
+```
+
+After setup, run:
 
 ```bash
 py -3 quickstart.py

@@ -11,7 +11,13 @@ conversation log
     -> Context Pack
 ```
 
-Run the complete free path from this repository:
+First-time setup requires SO Memory Kernel next to this repository. On Windows, use:
+
+```bat
+setup_free_trial.bat
+```
+
+After setup, run the complete free path from this repository:
 
 ```bash
 py -3 quickstart.py

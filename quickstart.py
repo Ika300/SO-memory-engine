@@ -14,8 +14,47 @@ for candidate in [PROJECT_ROOT, EXTRACTOR_ROOT, KERNEL_ROOT]:
     if candidate.exists() and str(candidate) not in sys.path:
         sys.path.insert(0, str(candidate))
 
-from so_extractor import extract_memory_units, load_conversation_json, memory_unit_to_engine_memory_dict, validate_memory_units
-from so_memory_engine import EngineMemory, EngineRelation, MemoryEngine
+try:
+    from so_extractor import extract_memory_units, load_conversation_json, memory_unit_to_engine_memory_dict, validate_memory_units
+except ModuleNotFoundError as exc:
+    if exc.name == "so_extractor":
+        print("SO Extractor Free is not installed or not importable.")
+        print()
+        print("From this repository, run:")
+        print()
+        print("  py -3 -m pip install -e SO_Extractor_Free")
+        print()
+        print("Or run the Windows helper:")
+        print()
+        print("  setup_free_trial.bat")
+        raise SystemExit(1) from exc
+    raise
+
+try:
+    from so_memory_engine import EngineMemory, EngineRelation, MemoryEngine
+except ModuleNotFoundError as exc:
+    if exc.name in {"so_memory_engine", "so_memory_kernel"}:
+        print("SO Memory Engine or SO Memory Kernel is not installed or not importable.")
+        print()
+        print("Expected alpha layout:")
+        print()
+        print("  Desktop/")
+        print("    SO_Memory_Kernel/")
+        print("    SO_Memory_Engine/")
+        print()
+        print("From SO_Memory_Engine, run:")
+        print()
+        print("  py -3 -m pip install -e ..\\SO_Memory_Kernel")
+        print("  py -3 -m pip install -e .")
+        print("  py -3 -m pip install -e SO_Extractor_Free")
+        print()
+        print("Or run the Windows helper:")
+        print()
+        print("  setup_free_trial.bat")
+        print()
+        print("See docs/INSTALLATION.md for details.")
+        raise SystemExit(1) from exc
+    raise
 
 DEFAULT_INPUT = EXTRACTOR_ROOT / "sample_inputs" / "conversation_log.json"
 DEFAULT_CURRENT_MESSAGE = "I want to work independently, but income stability worries me again."
